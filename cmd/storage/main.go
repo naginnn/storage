@@ -2,10 +2,15 @@ package main
 
 import (
 	"fmt"
-	"storage/internal/storage"
+	"github.com/naginnn/storage/internal/storage"
+	"log"
 )
 
 func main() {
 	st := storage.NewStorage()
-	fmt.Println("Hello Worlds!", st)
+	file, err := st.Upload("test.txt", []byte("Hello"))
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println("it works!", file)
 }
